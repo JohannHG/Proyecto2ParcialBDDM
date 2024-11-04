@@ -1,0 +1,22 @@
+Comandos a instalar:
+git init 
+npm init -y
+npm install --save tedious  
+npm install @faker-js/faker  
+npm install -D nodemon
+npm install morgan
+
+
+Para hacer la prueba deben estar dentro de estas carpetas:
+
+PS C:\Users\alain\OneDrive\Escritorio\prueba\Api> cd src
+PS C:\Users\alain\OneDrive\Escritorio\prueba\Api\src> cd model 
+
+Y ejecutar el siguiente comando:
+
+PS C:\Users\alain\OneDrive\Escritorio\prueba\Api\src\model> node products.model.js
+
+Si no hay errores, aparecerá el siguiente mensaje:
+
+Executing (default): SELECT 1+1 AS result
+Conexión a SQL Server establecida correctamente
