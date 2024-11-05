@@ -18,7 +18,7 @@ sequelize.authenticate()
     .then(() => console.log('Conexión a SQL Server establecida correctamente'))
     .catch(err => console.error('No se pudo conectar a SQL Server:', err));
 
-// Exportar la instancia de sequelize para usarla en otras partes de la aplicación
+
 module.exports = sequelize;
 
 
