@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Creacion de cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <h1 style="display: flex; justify-content: center; color:blue;">Datos personales</h1>
+    <form [formGroup] = "Datos" (ngSubmit) = "enviar()">
+
+      <ion-row>
+      <ion-col size="3"><label for="">Nombre</label></ion-col>
+      <ion-col size="9">
+        <input type="text" formControlName="Nombre" required><br>
+        <span *ngIf="Datos.controls.Nombre.invalid && Datos.controls.Nombre.touched"
+          [ngStyle]="{color: 'red'}">{{getAdvertencias()}} </span>
+      </ion-col>
+      </ion-row>
+
+      <ion-row>
+      <ion-col size="3"><label for="">Apellido</label></ion-col>
+      <ion-col size="9">
+        <input type="text" formControlName="Apellido" required>
+      </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="3"><label for="">Correo</label></ion-col>
+        <ion-col size="9">
+          <input type="text" formControlName="Correo" required>
+          <span *ngIf="Datos.controls.Correo.invalid && Datos.controls.Correo.touched"
+          [ngStyle]="{color: 'red'}">{{getAdvertenciasCorreo()}} </span>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="3"><label for="">Contraseña</label></ion-col>
+        <ion-col size="9">
+          <input type="password" formControlName="password" required>
+          <span *ngIf="Datos.controls.password.invalid && Datos.controls.password.touched"
+          [ngStyle]="{color: 'red'}">{{getAdvertenciaspassword()}} </span>
+        </ion-col>
+      </ion-row>
+
+      <ion-button color="success" expand="block" (click)="Valida(Datos.controls.Correo.value)" shape="round"
+      [disabled]="!Datos.valid">Enviar</ion-button>
+
+      <p>Form Status:{{Datos.status}}</p>
+    </form>
+  </ion-grid>
+</ion-content>
