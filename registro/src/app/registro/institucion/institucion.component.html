@@ -1,0 +1,17 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Selecciona Institución</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <form [formGroup]="institucionForm">
+      <ion-item>
+        <ion-label>Institución: </ion-label>
+        <ion-select formControlName="institucion" (ionChange)="emitirEstadoFormulario()">
+          <ion-select-option *ngFor="let institucion of instituciones" [value]="institucion">
+            {{ institucion }}  
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </form>
+  </ion-card-content>
+</ion-card>

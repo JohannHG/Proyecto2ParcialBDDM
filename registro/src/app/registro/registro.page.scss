@@ -1,0 +1,42 @@
+ion-header {
+  --background: #3b5998; /* Fondo del header */
+}
+
+.title-center {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+.custom-card {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra en las tarjetas */
+  border-radius: 10px; /* Bordes redondeados */
+  margin: 10px;
+}
+
+.custom-card ion-card-header {
+  background-color: #f0f0f5; /* Fondo claro para el encabezado */
+  border-radius: 10px 10px 0 0; /* Solo redondea la parte superior */
+}
+
+.register-button {
+  font-size: 1.2em;
+  font-weight: bold;
+  --background: #1a73e8; /* Fondo del botón */
+  --color: white;
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+ion-card-title {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #333;
+}
+
+ion-content {
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+  --padding-start: 20px;
+  --padding-end: 20px;
+  background-color: #f5f6fa; /* Fondo claro general */
+}

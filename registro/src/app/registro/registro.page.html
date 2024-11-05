@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="title-center">Registro de Asistentes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" size-md="6">
+        <ion-card class="custom-card">
+          <ion-card-header>
+            <ion-card-title>Registro de Usuario</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <app-usuario (formStatus)="onUsuarioFormStatusChange($event)"></app-usuario>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12" size-md="6">
+        <ion-card class="custom-card">
+          <ion-card-header>
+            <ion-card-title>Institución</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <app-institucion (formStatus)="onInstitucionFormStatusChange($event)"></app-institucion>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card class="custom-card">
+          <ion-card-header>
+            <ion-card-title>Actividad</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <app-actividad></app-actividad>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button expand="full" (click)="registrarUsuario()" class="register-button" color="secondary">Registrar Usuario</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

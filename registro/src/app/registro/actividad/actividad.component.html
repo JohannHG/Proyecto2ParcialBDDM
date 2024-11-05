@@ -1,0 +1,20 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Selecciona Actividad</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <form [formGroup]="actividadForm">
+      <ion-item>
+        <ion-label>Actividad: </ion-label>
+        <ion-select formControlName="actividad" (ionChange)="emitirEstadoFormulario()">
+          <ion-select-option *ngFor="let actividad of actividades" [value]="actividad">
+            {{ actividad }} 
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-note color="danger" *ngIf="actividadForm.get('actividad')?.invalid && actividadForm.get('actividad')?.touched">
+        La actividad es obligatoria.
+      </ion-note>
+    </form>
+  </ion-card-content>
+</ion-card>
