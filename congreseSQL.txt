@@ -1,0 +1,261 @@
+-- Crear base de datos
+CREATE DATABASE congrese;
+GO
+
+-- Usar la base de datos
+USE congrese;
+GO
+
+-- Tabla INSTITUCION
+CREATE TABLE INSTITUCION (
+    idInstitucion INT PRIMARY KEY IDENTITY(1,1),
+    NombreInstitucion VARCHAR(50),
+    Logo VARCHAR(50),
+    LinkPagina VARCHAR(50)
+);
+GO
+
+-- Tabla USUARIO
+CREATE TABLE USUARIO (
+    idUsuario INT PRIMARY KEY IDENTITY(1,1),
+    Nombre VARCHAR(50),
+    ApellidoP VARCHAR(50),
+    ApellidoM VARCHAR(50),
+    Correo VARCHAR(50),
+    Contraseña VARCHAR(255),
+    idInstitucion INT,
+    FOREIGN KEY (idInstitucion) REFERENCES INSTITUCION(idInstitucion)
+);
+GO
+
+-- Tabla HORA
+CREATE TABLE HORA (
+    idHora INT PRIMARY KEY IDENTITY(1,1),
+    HoraIni TIME,
+    HoraFin TIME
+);
+GO
+
+-- Tabla FECHA
+CREATE TABLE FECHA (
+    idFecha INT PRIMARY KEY IDENTITY(1,1),
+    DescripcionFecha DATETIME
+);
+GO
+
+-- Tabla FECHAHORA
+CREATE TABLE FECHAHORA (
+    idFechaHora INT PRIMARY KEY IDENTITY(1,1),
+    idFecha INT,
+    idHora INT,
+    FOREIGN KEY (idFecha) REFERENCES FECHA(idFecha),
+    FOREIGN KEY (idHora) REFERENCES HORA(idHora)
+);
+GO
+
+-- Tabla EVENTO
+CREATE TABLE EVENTO (
+    idEvento INT PRIMARY KEY IDENTITY(1,1),
+    idFechaHora INT,
+    NombreEvento VARCHAR(50),
+    idInstitucion INT,
+    FOREIGN KEY (idInstitucion) REFERENCES INSTITUCION(idInstitucion),
+    FOREIGN KEY (idFechaHora) REFERENCES FECHAHORA(idFechaHora)
+);
+GO
+
+-- Tabla IMAGEN
+CREATE TABLE IMAGEN (
+    idImagen INT PRIMARY KEY IDENTITY(1,1),
+    descripcion VARCHAR(50),
+    URL VARCHAR(100)
+);
+GO
+
+-- Tabla IMAGENACTIVIDAD
+CREATE TABLE IMAGENACTIVIDAD (
+    idImagenActividad INT PRIMARY KEY IDENTITY(1,1),
+    Descripcion VARCHAR(50),
+    URL VARCHAR(100),
+    idImagen INT,
+    idActividad INT,
+    FOREIGN KEY (idImagen) REFERENCES IMAGEN(idImagen),
+    FOREIGN KEY (idActividad) REFERENCES ACTIVIDAD(idActividad)
+);
+GO
+
+-- Tabla EVENTOFECHAHORA
+CREATE TABLE EVENTOFECHAHORA (
+    idEventoFechaHora INT PRIMARY KEY IDENTITY(1,1),
+    idEvento INT,
+    idFechaHora INT,
+    FOREIGN KEY (idEvento) REFERENCES EVENTO(idEvento),
+    FOREIGN KEY (idFechaHora) REFERENCES FECHAHORA(idFechaHora)
+);
+GO
+
+-- Tabla ACTIVIDAD
+CREATE TABLE ACTIVIDAD (
+    idActividad INT PRIMARY KEY IDENTITY(1,1),
+    NombreActividad VARCHAR(50),
+    DescripcionActividad VARCHAR(200),
+    idEvento INT,
+    FOREIGN KEY (idEvento) REFERENCES EVENTO(idEvento)
+);
+GO
+
+-- Tabla PERFIL
+CREATE TABLE PERFIL (
+    idPerfil INT PRIMARY KEY IDENTITY(1,1),
+    DescripcionPerfil VARCHAR(100)
+);
+GO
+
+-- Tabla ACTIVIDADDETALLE
+CREATE TABLE ACTIVIDADDETALLE (
+    idActividadDetalle INT PRIMARY KEY IDENTITY(1,1),
+    idActividad INT,
+    DescripcionActividadDetalle VARCHAR(200),
+    cupo INT,
+    Ubicación VARCHAR(50),
+    idFechaHora INT,
+    idPerfil INT,
+    idEventoUsuario INT,
+    FOREIGN KEY (idActividad) REFERENCES ACTIVIDAD(idActividad),
+    FOREIGN KEY (idFechaHora) REFERENCES FECHAHORA(idFechaHora),
+    FOREIGN KEY (idPerfil) REFERENCES PERFIL(idPerfil)
+);
+GO
+
+-- Tabla EVENTOACTIVIDAD
+CREATE TABLE EVENTOACTIVIDAD (
+    idEventoActividad INT PRIMARY KEY IDENTITY(1,1),
+    idEvento INT,
+    idActividad INT,
+    FOREIGN KEY (idEvento) REFERENCES EVENTO(idEvento),
+    FOREIGN KEY (idActividad) REFERENCES ACTIVIDAD(idActividad)
+);
+GO
+
+-- Tabla REGISTROASISTENCIA
+CREATE TABLE REGISTROASISTENCIA (
+    idRegistroAsistencia INT PRIMARY KEY IDENTITY(1,1),
+    idUsuario INT,
+    idEvento INT,
+    EstadoRegistro VARCHAR(50),
+    idActividadDetalle INT,
+    FOREIGN KEY (idUsuario) REFERENCES USUARIO(idUsuario),
+    FOREIGN KEY (idEvento) REFERENCES EVENTO(idEvento),
+    FOREIGN KEY (idActividadDetalle) REFERENCES ACTIVIDADDETALLE(idActividadDetalle)
+);
+GO
+
+-- Tabla EVENTOUSUARIO
+CREATE TABLE EVENTOUSUARIO (
+    idEventoUsuario INT PRIMARY KEY IDENTITY(1,1),
+    idActividadDetalle INT,
+    FOREIGN KEY (idActividadDetalle) REFERENCES ACTIVIDADDETALLE(idActividadDetalle)
+);
+GO
+
+-- Insertar registros
+-- Tabla INSTITUCION
+INSERT INTO INSTITUCION (NombreInstitucion, Logo, LinkPagina) VALUES
+('Tecnologico de Estudios Superiores de Ecatepec', 'TESE-LOGO.png', 'https://www.tese.edu.mx/tese2020/'),
+('Tecnologico de Estudios Superiores de Coacalco', '', 'https://www.tecnologicodecoacalco.edu.mx/'),
+('Instituto Politecnico Nacional', 'ipn_logo.png', 'https://www.ipn.mx/'),
+('Corporación Universitaria U de Colombia', '', 'https://udecolombia.edu.co/');
+GO
+
+-- Tabla USUARIO
+INSERT INTO USUARIO (Nombre, ApellidoP, ApellidoM, Correo, Contraseña, idInstitucion) VALUES
+('Juan', 'Pérez', 'López', 'juan.perez@robotica2024.com', '12345', 1),
+('Ana', 'García', 'Hernández', 'ana.garcia@cit-tec.com', 'password', 2),
+('Dr. Carlos', 'Rodríguez', 'Vega', 'carlos.rodriguez@uni.edu', 'clave123', 3),
+('Dra. Laura', 'Martínez', 'Sánchez', 'laura.martinez@int.org', 'secreto', 4);
+GO
+
+-- Tabla FECHA
+INSERT INTO FECHA (DescripcionFecha) VALUES
+('2024-11-28'),
+('2024-11-29'),
+('2024-11-30');
+GO
+
+-- Tabla HORA
+INSERT INTO HORA (HoraIni, HoraFin) VALUES
+('09:00:00', '10:30:00'),
+('11:00:00', '12:30:00'),
+('14:00:00', '15:30:00'),
+('16:00:00', '17:30:00');
+GO
+
+-- Tabla FECHAHORA
+INSERT INTO FECHAHORA (idFecha, idHora) VALUES
+(1, 1),
+(2, 2),
+(2, 3),
+(3, 4);
+GO
+
+-- Tabla PERFIL
+INSERT INTO PERFIL (DescripcionPerfil) VALUES
+('Conferencista'),
+('Asistente');
+GO
+
+-- Tabla EVENTO
+INSERT INTO EVENTO (idFechaHora, NombreEvento, idInstitucion) VALUES
+(1, 'Innovación Robótica 2024', 1),
+(2, 'Tecnologías Disruptivas', 2),
+(3, 'Inteligencia Artificial Aplicada', 3),
+(4, 'Robótica y Sociedad', 4);
+GO
+
+-- Tabla ACTIVIDAD
+INSERT INTO ACTIVIDAD (NombreActividad, DescripcionActividad, idEvento) VALUES
+('Taller de Robótica', 'Aprende a construir robots básicos.', 1),
+('Conferencia de IA', 'Conferencia sobre aplicaciones de IA en robótica.', 2),
+('Mesa Redonda', 'Discusión sobre el impacto de la tecnología.', 3),
+('Demostración de Robots', 'Muestra de robots autónomos.', 4);
+GO
+
+-- Tabla ACTIVIDADDETALLE
+INSERT INTO ACTIVIDADDETALLE (idActividad, DescripcionActividadDetalle, cupo, Ubicación, idFechaHora, idPerfil, idEventoUsuario) VALUES
+(1, 'Construcción de robots sumo', 50, 'Auditorio 1', 1, 2, 1),
+(2, 'Avances en IA para robots', 50, 'Auditorio 1', 2, 2, 1),
+(3, 'Discusión sobre el impacto de la tecnología.', 50, 'Auditorio 1', 3, 1, 1),
+(4, 'Carrera de Robots velocistas', 100, 'Aula Q101', 4, 2, 2);
+GO
+
+-- Tabla EVENTOACTIVIDAD
+INSERT INTO EVENTOACTIVIDAD (idEvento, idActividad) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4);
+GO
+
+-- Tabla EVENTOUSUARIO
+INSERT INTO EVENTOUSUARIO (idActividadDetalle) VALUES
+(1),
+(2),
+(3),
+(4);
+GO
+
+-- Tabla EVENTOFECHAHORA
+INSERT INTO EVENTOFECHAHORA (idEvento, idFechaHora) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4);
+GO
+
+-- Tabla REGISTROASISTENCIA
+INSERT INTO REGISTROASISTENCIA (idUsuario, idEvento, EstadoRegistro, idActividadDetalle) VALUES
+(1, 1, 'Asistió', 1),
+(2, 2, 'Asistió', 2),
+(3, 3, 'Participó', 3),
+(4, 4, 'Participó', 4);
+GO
