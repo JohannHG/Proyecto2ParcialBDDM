@@ -1,0 +1,33 @@
+<div>
+  <!-- Botón para obtener los datos -->
+ <!-- <button ion-button (click)="fetchData()">Cargar Datos</button>--> 
+ <ion-item>
+    <ion-label>Selecciona una opción</ion-label>
+    <ion-select (ionChange)="fetchData($event.detail.value)" placeholder="Selecciona una">
+      <ion-select-option 
+        *ngFor="let option of options; let i = index" 
+        [value]="i">
+        {{ option.label }}
+      </ion-select-option>
+    </ion-select>
+</ion-item>
+
+  <table *ngIf="data.length > 0" border="1">
+    <thead>
+      <tr>
+        <th *ngFor="let header of headers">{{ header }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td *ngFor="let header of headers">{{ item[header] }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Mensaje si no hay datos -->
+  <p *ngIf="data.length === 0">No hay datos disponibles.</p>
+
+  <!-- Botón para generar PDF -->
+  <button *ngIf="data.length > 0" ion-button (click)="generatePDF()">Generar PDF</button>
+</div>

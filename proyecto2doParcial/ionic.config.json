@@ -1,0 +1,7 @@
+{
+  "name": "proyecto2doParcial",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
