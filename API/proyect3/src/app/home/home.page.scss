@@ -1,0 +1,164 @@
+/* Contenedor general */
+#container {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+/* Estilo para el menú lateral */
+ion-menu {
+  --background: rgba(255, 255, 255, 0.95); /* Blanco translúcido */
+  backdrop-filter: blur(12px); /* Efecto de desenfoque */
+  width: 260px; /* Ancho personalizado */
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2); /* Sombra flotante */
+  border-right: 1px solid rgba(0, 0, 0, 0.1); /* Línea divisoria tenue */
+  border-radius: 0 10px 10px 0; /* Bordes redondeados */
+}
+
+ion-menu ion-header {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333333;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para los ítems del menú */
+ion-menu ion-item {
+  --color: #333333;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+ion-menu ion-item:hover {
+  background: rgba(74, 144, 226, 0.15); /* Azul translúcido */
+  --color: #4a90e2; /* Azul */
+  cursor: pointer;
+}
+
+/* Submenú Congreso 2025 */
+ion-item[button] {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 14px 20px;
+  color: #4a90e2; /* Azul */
+  transition: background 0.4s ease;
+}
+
+ion-item[button]:hover {
+  background: rgba(74, 144, 226, 0.1); /* Azul claro translúcido */
+}
+
+ion-list {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  margin: 10px 0;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+ion-list ion-item {
+  --color: #333333;
+  font-size: 14px;
+  padding: 12px 20px;
+}
+
+ion-list ion-item:hover {
+  background: rgba(74, 144, 226, 0.15);
+  --color: #4a90e2;
+}
+
+/* Cambiar ícono de chevron */
+ion-icon[name="chevron-down"] {
+  color: #4a90e2;
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+ion-item[button]:hover ion-icon[name="chevron-down"] {
+  transform: rotate(180deg); /* Rotación */
+}
+
+/* Barra superior */
+ion-toolbar {
+  --background: rgba(255, 255, 255, 0.9); /* Blanco translúcido */
+  backdrop-filter: blur(12px);
+  --color: #333333;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Botones en barra superior */
+ion-buttons ion-button {
+  --color: #333333;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0 10px;
+  transition: color 0.4s ease, transform 0.3s ease;
+}
+
+ion-buttons ion-button:hover {
+  --color: #4a90e2; /* Azul */
+  transform: scale(1.1); /* Aumenta tamaño */
+}
+
+/* Pie de página */
+.custom-footer {
+  background: rgba(255, 255, 255, 0.9); /* Blanco translúcido */
+  backdrop-filter: blur(10px);
+  padding: 20px 0;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.1); /* Línea divisoria */
+}
+
+.footer-toolbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 15px;
+}
+
+.social-icons ion-icon {
+  font-size: 32px;
+  color: inherit;
+  transition: transform 0.3s ease;
+}
+
+.social-icons ion-icon:hover {
+  transform: scale(1.3); /* Aumenta tamaño */
+}
+
+.footer-bottom {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333333;
+}

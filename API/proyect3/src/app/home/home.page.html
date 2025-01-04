@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- Contenedor izquierdo: Menú lateral, logo y texto -->
+    <ion-buttons slot="start" style="display: flex; align-items: center;">
+      <!-- Botón para el menú lateral -->
+      <ion-menu-button style="margin-right: 10px;"></ion-menu-button>
+      <!-- Logo -->
+      <img src="assets/Logo_tese.jpg" alt="Logo" style="height: 40px; margin-right: 10px;" />
+      <!-- Texto -->
+      <span style="font-size: 14px; font-weight: bold; white-space: nowrap;">
+        TECNÓLOGICO DE ESTUDIOS SUPERIORES DE ECATEPEC
+      </span> 
+    </ion-buttons>
+
+    <!-- Botones de navegación centrados -->
+    <div style="text-align: center;">
+      <ion-buttons slot="end" style="display: flex; justify-content: center;">
+        <ion-button routerLink="/" style="margin: 0 10px; font-weight: bold;">INICIO</ion-button>
+        <ion-button routerLink="/contacto" style="margin: 0 10px; font-weight: bold;">CONTACTO</ion-button>
+        <ion-button routerLink="/login" style="margin: 0 10px; font-weight: bold;">INICIAR SESION</ion-button>
+      </ion-buttons>
+    </div>
+    
+    <!-- Íconos de redes sociales en el lado derecho -->
+    <ion-buttons slot="end" style="display: flex; align-items: center;">
+      <a href="https://youtube.com" target="_blank" style="margin-right: 10px;">
+        <ion-icon name="logo-youtube" style="font-size: 24px; color: red;"></ion-icon>
+      </a>
+      <a href="https://facebook.com" target="_blank" style="margin-right: 10px;">
+        <ion-icon name="logo-facebook" style="font-size: 24px; color: #4267B2;"></ion-icon>
+      </a>
+      <a href="https://twitter.com" target="_blank">
+        <ion-icon name="logo-twitter" style="font-size: 24px; color: #1DA1F2;"></ion-icon>
+      </a>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Menú lateral -->
+  <ion-menu side="start" menuId="main-menu" contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menú</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <ion-item routerLink="/">Inicio</ion-item>
+        <ion-item routerLink="/contacto">Contacto</ion-item>
+        <ion-item routerLink="/login">Iniciar sesión</ion-item>
+
+        <!-- Menú Congreso 2025 -->
+        <ion-item button (click)="toggleSubmenu()">
+          Congreso 2025
+          <ion-icon name="chevron-down" slot="end"></ion-icon>
+        </ion-item>
+        <ion-list *ngIf="showSubmenu" lines="none" inset>
+          <ion-item routerLink="/buscar-componente">Componente/Página</ion-item>
+          <ion-item routerLink="/gestionar-pdf">Descargar/Subir PDF</ion-item>
+        </ion-list>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <!-- Contenido principal -->
+  <div id="main-content" style="flex: 1;">
+    <ion-router-outlet></ion-router-outlet>
+  </div>
+
+  <!-- Pie de página -->
+  <ion-footer class="custom-footer">
+    <ion-toolbar class="footer-toolbar">
+      <!-- Íconos de redes sociales -->
+      <div class="social-icons">
+        <a href="https://youtube.com" target="_blank">
+          <ion-icon name="logo-youtube" style="color: red;"></ion-icon>
+        </a>
+        <a href="https://facebook.com" target="_blank">
+          <ion-icon name="logo-facebook" style="color: #4267B2;"></ion-icon>
+        </a>
+        <a href="https://twitter.com" target="_blank">
+          <ion-icon name="logo-twitter" style="color: #1DA1F2;"></ion-icon>
+        </a>
+      </div>
+  
+      <!-- Información del pie de página -->
+      <div class="footer-content footer-text">
+        <p>&copy; 2024 Tecnológico de Estudios Superiores de Ecatepec</p>
+        <p>Email: 
+          <a href="mailto:contacto@ejemplo.com">contacto&#64;ejemplo.com</a>
+        </p>
+        <p>Teléfono: (55) 1234-5678</p>
+      </div>
+  
+      <!-- Nota final -->
+      <div class="footer-bottom">
+        <p>Todos los derechos reservados.</p>
+      </div>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>
+
+
