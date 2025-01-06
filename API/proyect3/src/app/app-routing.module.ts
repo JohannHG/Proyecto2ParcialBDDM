@@ -11,6 +11,14 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'buscar-componente',
+    loadChildren: () => import('./buscar-componente/buscar-componente.module').then( m => m.BuscarComponentePageModule)
+  },
+  {
+    path: 'subir-pdf',
+    loadChildren: () => import('./subir-pdf/subir-pdf.module').then( m => m.SubirPdfPageModule)
+  },
 ];
 
 @NgModule({

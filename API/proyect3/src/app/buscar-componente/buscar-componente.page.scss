@@ -1,0 +1,90 @@
+/* Quitar margen y barra blanca extra */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Contenedor principal centrado */
+  .search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con transparencia */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Espacio entre título y elementos */
+  .search-container h2 {
+    color: #004c8c;
+    margin-bottom: 10px;
+  }
+  
+  .search-container p {
+    color: #333333;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+  
+  /* Formulario */
+  .search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacio entre filas */
+  }
+  
+  /* Filas del formulario */
+  .form-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 0; /* Espacio arriba y abajo */
+  }
+  
+  ion-label {
+    flex: 1;
+    color: #000000;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  ion-input {
+    flex: 2;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px 10px;
+    background-color: #f9f9f9;
+    color: #000000;
+  }
+  
+  ion-button {
+    flex: 1;
+    background-color: #004c8c;
+    color: #ffffff;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+  
+  ion-button:hover {
+    background-color: #003366;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  /* Mensaje de error */
+  .error-message p {
+    color: #ff3333;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+    /* Eliminar barra blanca (encabezado) */
+ion-header {
+    display: none;
+  }

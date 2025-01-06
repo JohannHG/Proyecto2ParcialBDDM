@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Contenedor principal -->
+  <div class="pdf-container">
+    <!-- Título y descripción -->
+    <h2>Gestionar PDF</h2>
+    <p>Sube o descarga archivos PDF de manera rápida y sencilla.</p>
+
+    <!-- Formulario con ngSubmit para manejo de eventos -->
+    <form (ngSubmit)="onSubmit()" class="pdf-form" enctype="multipart/form-data">
+
+      <!-- Subir PDF -->
+      <div class="form-row">
+        <ion-label>Seleccionar PDF:</ion-label>
+        <input type="file" accept="application/pdf" (change)="onFileSelected($event)" />
+        <ion-button type="submit" [disabled]="!selectedFile">Subir PDF</ion-button>
+      </div>
+
+      <!-- Información del archivo subido -->
+      <div class="file-info" *ngIf="selectedFile">
+        <p><strong>Archivo seleccionado:</strong> {{ selectedFile.name }}</p>
+        <p><strong>Tamaño:</strong> {{ selectedFile.size / 1024 | number: '1.0-2' }} KB</p>
+      </div>
+
+      <!-- Descargar PDF -->
+      <div class="form-row">
+        <ion-label>Descargar PDF:</ion-label>
+        <ion-button (click)="onDownload()">Descargar PDF</ion-button>
+      </div>
+
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Buscar Componentes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Contenedor del formulario -->
+  <div class="search-container">
+    <h2>Buscar Ruta o Componente</h2>
+    <p>Ingresa la ruta o el nombre del componente que deseas buscar:</p>
+
+    <!-- Formulario con dos botones -->
+    <form class="search-form">
+      <!-- Buscar URL -->
+      <div class="form-row">
+        <ion-label>Buscar URL de Ruta:</ion-label>
+        <ion-input
+          type="text"
+          placeholder="Ejemplo: /home, /contacto"
+          [(ngModel)]="searchData.route"
+          name="route">
+        </ion-input>
+        <ion-button (click)="searchRoute()">Buscar Ruta</ion-button>
+      </div>
+
+      <!-- Buscar Componente -->
+      <div class="form-row">
+        <ion-label>Buscar Componente:</ion-label>
+        <ion-input
+          type="text"
+          placeholder="Ejemplo: Login, Contacto"
+          [(ngModel)]="searchData.component"
+          name="component">
+        </ion-input>
+        <ion-button (click)="searchComponent()">Buscar Componente</ion-button>
+      </div>
+    </form>
+
+    <!-- Mensaje de error -->
+    <div *ngIf="errorMessage" class="error-message">
+      <p>{{ errorMessage }}</p>
+    </div>
+  </div>
+</ion-content>

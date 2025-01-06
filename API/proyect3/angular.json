@@ -5,9 +5,14 @@
   "projects": {
     "app": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@ionic/angular:page":{
+          "standalone": false
+        }  
+      },
       "root": "",
       "sourceRoot": "src",
+      
       "prefix": "app",
       "architect": {
         "build": {
