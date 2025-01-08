@@ -1,0 +1,41 @@
+
+#container {
+  text-align: center;
+
+  max-width: 100%px;
+  width: 70%px;
+  margin: 0 auto; 
+
+  overflow: hidden;
+}
+
+
+#container strong {
+  font-size: 80px;
+  line-height: 46px;
+  margin: 20;
+  box-sizing:border-box;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+#container ion-card-1{
+  text-align: center;
+
+  max-width: 100%px;
+  width: 70%;
+  margin: 20 ; 
+  background-color: bisque;
+  box-sizing:border-box;
+  
+}
